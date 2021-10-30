@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SineFil</string>
+
+    <string name="home_movies_section_popular_title">Popular</string>
+    <string name="home_movies_section_latest_title">Now Playing</string>
+    <string name="home_movies_section_topRated_title">Top Rated</string>
+
 </resources>

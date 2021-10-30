@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HomeSectionTitleTextView">
+        <item name="android:textSize">@dimen/movies_home_section_title_size</item>
+        <item name="fontFamily">@font/pt_sans_bold</item>
+        <item name="android:padding">@dimen/movies_home_section_title_padding</item>
+    </style>
+
+    <style name="HomeMovieTitleTextView">
+        <item name="android:textSize">@dimen/movies_home_movie_title_size</item>
+        <item name="fontFamily">@font/pt_sans</item>
+        <item name="android:padding">@dimen/movies_home_movie_title_padding</item>
+    </style>
+
+</resources>
