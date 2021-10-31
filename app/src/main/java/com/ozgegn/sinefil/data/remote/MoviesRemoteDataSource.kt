@@ -10,7 +10,7 @@ import javax.inject.Inject
 class MoviesRemoteDataSource @Inject constructor(
     private val api: TmdbApi,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-) : MoviesDataSource.MoviesRemoteDataSource {
+) : MoviesDataSource.RemoteDataSource {
 
     override suspend fun getPopularMovies(page: Int): Result<List<MovieResponseModel>> =
         withContext(ioDispatcher) {

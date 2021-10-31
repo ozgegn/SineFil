@@ -5,4 +5,8 @@
     <string name="home_movies_section_latest_title">Now Playing</string>
     <string name="home_movies_section_topRated_title">Top Rated</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_profile">Profile</string>
+
 </resources>

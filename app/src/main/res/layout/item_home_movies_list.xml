@@ -9,16 +9,22 @@
         <variable
             name="movie"
             type="com.ozgegn.sinefil.data.MovieModel" />
+
+        <variable
+            name="clickListener"
+            type="com.ozgegn.sinefil.features.movies.MovieClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(movie)}">
 
         <ImageView
             android:id="@+id/itemHomeMoviePoster"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:loadImage="@{movie.originalPosterUrl}"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

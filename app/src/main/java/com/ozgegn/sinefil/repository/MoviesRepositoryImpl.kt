@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
-    private val remoteDataSource: MoviesDataSource.MoviesRemoteDataSource,
+    private val remoteDataSource: MoviesDataSource.RemoteDataSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MoviesRepository {
 

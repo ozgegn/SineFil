@@ -4,7 +4,7 @@ import com.ozgegn.sinefil.data.remote.MovieResponseModel
 
 interface MoviesDataSource {
 
-    interface MoviesRemoteDataSource {
+    interface RemoteDataSource {
 
         suspend fun getPopularMovies(page: Int): Result<List<MovieResponseModel>>
 

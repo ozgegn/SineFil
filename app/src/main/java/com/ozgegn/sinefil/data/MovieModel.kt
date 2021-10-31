@@ -12,4 +12,9 @@ data class MovieModel(
     val title: String,
     val vote_average: Double,
     val vote_count: Int
-)
+) {
+    fun getSmallImageUrl(): String = "https://image.tmdb.org/t/p/w500/$backdrop_path"
+
+    fun getOriginalPosterUrl(): String = "https://image.tmdb.org/t/p/original/$poster_path"
+
+}
