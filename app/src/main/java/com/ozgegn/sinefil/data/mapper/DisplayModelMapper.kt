@@ -1,7 +1,9 @@
 package com.ozgegn.sinefil.data.mapper
 
+import com.ozgegn.sinefil.data.GenreModel
 import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.data.remote.MovieResponseModel
+import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
 
 fun MovieResponseModel.toDisplayModel(): MovieModel = MovieModel(
     backdrop_path,
@@ -17,6 +19,14 @@ fun MovieResponseModel.toDisplayModel(): MovieModel = MovieModel(
     vote_count
 )
 
-fun List<MovieResponseModel>.toDisplayModelList(): List<MovieModel> = this.map {
+fun List<MovieResponseModel>.toMovieDisplayModelList(): List<MovieModel> = this.map {
+    it.toDisplayModel()
+}
+
+fun GenreResponseModel.toDisplayModel() = GenreModel(
+    id, name
+)
+
+fun List<GenreResponseModel>.toGenreDisplayModelList() = this.map {
     it.toDisplayModel()
 }

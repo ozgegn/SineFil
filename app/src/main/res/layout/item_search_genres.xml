@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="genre"
+            type="com.ozgegn.sinefil.data.GenreModel" />
+
+        <variable
+            name="clickListener"
+            type="com.ozgegn.sinefil.features.search.GenreClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:onClick="@{() -> clickListener.onClick(genre)}"
+        app:cardCornerRadius="8dp">
+
+        <TextView
+            android:id="@+id/itemSearchGenreName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{genre.name}" />
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

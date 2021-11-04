@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ozgegn.sinefil.R
+import com.ozgegn.sinefil.base.ItemViewModel
 import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.databinding.ItemHomeMoviesListBinding
 

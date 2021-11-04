@@ -6,8 +6,10 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ozgegn.sinefil.R
+import com.ozgegn.sinefil.data.GenreModel
 import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.features.movies.HomeListAdapter
+import com.ozgegn.sinefil.features.search.SearchGenreListAdapter
 import java.text.SimpleDateFormat
 
 @BindingAdapter("listData")
@@ -37,7 +39,15 @@ fun bindFormattedDate(textView: TextView?, date: String?) {
     try {
         val parsedDate = inputDateFormat.parse(date)
         textView?.text = dateFormat.format(parsedDate)
-    }catch (e: Exception) {
+    } catch (e: Exception) {
         textView?.text = date
+    }
+}
+
+@BindingAdapter("genreListData")
+fun bindGenreRecyclerView(recyclerView: RecyclerView, data: List<GenreModel>?) {
+    val adapter = recyclerView.adapter as SearchGenreListAdapter
+    adapter.submitList(data) {
+        recyclerView.scrollToPosition(0)
     }
 }

@@ -2,6 +2,7 @@ package com.ozgegn.sinefil.data.remote
 
 import com.ozgegn.sinefil.data.MoviesDataSource
 import com.ozgegn.sinefil.data.Result
+import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -46,6 +47,20 @@ class MoviesRemoteDataSource @Inject constructor(
                     Result.Success(result.body()?.results ?: listOf())
                 else
                     Result.Error(Exception("Movies not found"))
+            } catch (e: Exception) {
+                Result.Error(e)
+            }
+        }
+
+    override suspend fun getGenreList(): Result<List<GenreResponseModel>> =
+        withContext(ioDispatcher) {
+            try {
+                val result = api.getGenreList()
+                if (result.isSuccessful) {
+                    Result.Success(result.body()?.genres ?: listOf())
+                } else {
+                    Result.Error(Exception("Genres not found"))
+                }
             } catch (e: Exception) {
                 Result.Error(e)
             }

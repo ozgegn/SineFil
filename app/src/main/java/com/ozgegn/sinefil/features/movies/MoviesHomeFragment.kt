@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.ozgegn.sinefil.R
 import com.ozgegn.sinefil.databinding.FragmentMoviesHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,12 +33,27 @@ class MoviesHomeFragment : Fragment() {
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = this
 
-        val adapter = HomeListAdapter(MovieClickListener { movie ->
-
+        val popularMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
+            val action = MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie.id)
+            findNavController().navigate(action)
         })
-        binding?.homePopularMoviesList?.adapter = adapter
-        binding?.homeNowPlayingMoviesList?.adapter = adapter
-        binding?.homeTopRatedMoviesList?.adapter = adapter
+
+        val nowPlayingMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
+            val action = MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie.id)
+            findNavController().navigate(action)
+        })
+
+        val topRatedMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
+            val action = MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie.id)
+            findNavController().navigate(action)
+        })
+        binding?.homePopularMoviesList?.isNestedScrollingEnabled = false
+        binding?.homeNowPlayingMoviesList?.isNestedScrollingEnabled = false
+        binding?.homeTopRatedMoviesList?.isNestedScrollingEnabled = false
+
+        binding?.homePopularMoviesList?.adapter = popularMoviesAdapter
+        binding?.homeNowPlayingMoviesList?.adapter = nowPlayingMoviesAdapter
+        binding?.homeTopRatedMoviesList?.adapter = topRatedMoviesAdapter
         viewModel.getMovies(1)
 
     }

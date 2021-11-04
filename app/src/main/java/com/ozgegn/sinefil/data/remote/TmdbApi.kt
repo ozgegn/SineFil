@@ -1,5 +1,6 @@
 package com.ozgegn.sinefil.data.remote
 
+import com.ozgegn.sinefil.data.remote.response.GetGenreListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -20,5 +21,8 @@ interface TmdbApi {
     suspend fun getTopRatedMovies(
         @Query("page") page: Int
     ): Response<GetTopRatedMoviesResponse>
+
+    @GET("genre/movie/list")
+    suspend fun getGenreList(): Response<GetGenreListResponse>
 
 }

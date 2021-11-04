@@ -8,4 +8,6 @@ interface MoviesRepository {
 
     suspend fun getTopRatedMovies(page: Int): Result<List<MovieModel>>
 
+    suspend fun getGenres(): Result<List<GenreModel>>
+
 }
