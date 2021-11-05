@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="movie"
-            type="com.ozgegn.sinefil.data.MovieModel" />
+            name="viewModel"
+            type="com.ozgegn.sinefil.features.movieDetail.MovieDetailViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -30,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintDimensionRatio="16:9"
-                    app:loadImage="@{movie.originalPosterUrl}" />
+                    app:loadImage="@{viewModel.movie.originalPosterUrl}" />
 
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -49,17 +50,20 @@
                     android:id="@+id/movieDetailTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{movie.title}"
+                    android:padding="8dp"
+                    android:text="@{viewModel.movie.title}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Title" />
 
                 <TextView
                     android:id="@+id/movieDetailVoteAverage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    app:doubleText="@{movie.vote_average}"
+                    android:padding="8dp"
+                    app:doubleText="@{viewModel.movie.vote_average}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/movieDetailTitle"
                     tools:text="Vote Average" />
@@ -68,7 +72,8 @@
                     android:id="@+id/movieDetailReleaseDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:formatDate="@{movie.release_date}"
+                    android:padding="8dp"
+                    app:formatDate="@{viewModel.movie.release_date}"
                     app:layout_constraintBaseline_toBaselineOf="@+id/movieDetailVoteAverage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.784"
@@ -80,7 +85,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="false"
-                    android:text="@{movie.overview}"
+                    android:text="@{viewModel.movie.overview}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

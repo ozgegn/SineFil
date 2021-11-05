@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -49,9 +50,6 @@ class MoviesHomeFragment : Fragment() {
         val topRatedMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
             viewModel.onMovieClicked(movie)
         })
-        binding?.homePopularMoviesList?.isNestedScrollingEnabled = false
-        binding?.homeNowPlayingMoviesList?.isNestedScrollingEnabled = false
-        binding?.homeTopRatedMoviesList?.isNestedScrollingEnabled = false
 
         binding?.homePopularMoviesList?.adapter = popularMoviesAdapter
         binding?.homeNowPlayingMoviesList?.adapter = nowPlayingMoviesAdapter

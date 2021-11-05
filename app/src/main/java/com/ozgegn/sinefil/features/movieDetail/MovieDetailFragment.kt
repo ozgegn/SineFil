@@ -13,7 +13,7 @@ import com.ozgegn.sinefil.databinding.FragmentMovieDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieDetailFragment: Fragment() {
+class MovieDetailFragment : Fragment() {
 
     private val detailViewModel: MovieDetailViewModel by viewModels()
     private var binding: FragmentMovieDetailBinding? = null
@@ -25,25 +25,22 @@ class MovieDetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentMovieDetailBinding>(inflater, R.layout.fragment_movie_detail, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_movie_detail,
+            container,
+            false
+        )
         setHasOptionsMenu(true)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding?.lifecycleOwner = this
+        binding?.viewModel = detailViewModel
 
         val movieId = args.movieId
-
-        with(binding) {
-            this?.lifecycleOwner = this@MovieDetailFragment
-        }
-
-        detailViewModel.movie.observe(viewLifecycleOwner) {
-            binding?.movie = it
-            binding?.executePendingBindings()
-        }
-
         detailViewModel.getMovie(movieId)
 
     }
