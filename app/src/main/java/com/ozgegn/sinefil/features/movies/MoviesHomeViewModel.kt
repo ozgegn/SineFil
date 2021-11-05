@@ -37,6 +37,10 @@ class MoviesHomeViewModel @Inject constructor(
 
     var isLoading = ObservableBoolean()
 
+    private val _movieClicked = MutableLiveData<Int>()
+    val movieClicked: LiveData<Int>
+        get() = _movieClicked
+
 
     fun getMovies(page: Int) {
 
@@ -62,6 +66,13 @@ class MoviesHomeViewModel @Inject constructor(
                     _topRatedMovies.value = topRatedMovies.data ?: listOf()
                 }
             }
+        }
+    }
+
+    fun onMovieClicked(movieModel: MovieModel) {
+        viewModelScope.launch {
+            moviesRepository.saveMovie(movieModel)
+            _movieClicked.value = movieModel.id
         }
     }
 

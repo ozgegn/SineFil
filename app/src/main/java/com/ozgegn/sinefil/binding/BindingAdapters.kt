@@ -21,9 +21,11 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<MovieModel>?) {
 }
 
 @BindingAdapter("loadImage")
-fun bindImageView(imageView: ImageView, url: String) {
-    Glide.with(imageView.context).load(url).placeholder(R.drawable.image_placeholder)
-        .error(R.drawable.broken_image).into(imageView)
+fun bindImageView(imageView: ImageView, url: String?) {
+    url?.let {
+        Glide.with(imageView.context).load(url).placeholder(R.drawable.image_placeholder)
+            .error(R.drawable.broken_image).into(imageView)
+    }
 }
 
 @BindingAdapter("doubleText")

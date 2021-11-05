@@ -10,4 +10,8 @@ interface MoviesRepository {
 
     suspend fun getGenres(): Result<List<GenreModel>>
 
+    suspend fun saveMovie(movieModel: MovieModel)
+
+    suspend fun getMovie(id: Int): Result<MovieModel>
+
 }

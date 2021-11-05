@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.ozgegn.sinefil.R
+import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.databinding.FragmentMoviesHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,19 +34,20 @@ class MoviesHomeFragment : Fragment() {
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = this
 
+        viewModel.movieClicked.observe(viewLifecycleOwner) {
+            navigateToMovieDetail(it)
+        }
+
         val popularMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
-            val action = MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie.id)
-            findNavController().navigate(action)
+            viewModel.onMovieClicked(movie)
         })
 
         val nowPlayingMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
-            val action = MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie.id)
-            findNavController().navigate(action)
+            viewModel.onMovieClicked(movie)
         })
 
         val topRatedMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
-            val action = MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie.id)
-            findNavController().navigate(action)
+            viewModel.onMovieClicked(movie)
         })
         binding?.homePopularMoviesList?.isNestedScrollingEnabled = false
         binding?.homeNowPlayingMoviesList?.isNestedScrollingEnabled = false
@@ -56,6 +58,12 @@ class MoviesHomeFragment : Fragment() {
         binding?.homeTopRatedMoviesList?.adapter = topRatedMoviesAdapter
         viewModel.getMovies(1)
 
+    }
+
+    private fun navigateToMovieDetail(movieId: Int) {
+        val action =
+            MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movieId)
+        findNavController().navigate(action)
     }
 
     override fun onDestroy() {

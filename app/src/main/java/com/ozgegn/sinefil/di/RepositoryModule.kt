@@ -15,6 +15,9 @@ object RepositoryModule {
 
     @Provides
     @ViewModelScoped
-    fun provideMoviesRepository(remoteDataSource: MoviesDataSource.RemoteDataSource): MoviesRepository =
-        MoviesRepositoryImpl(remoteDataSource)
+    fun provideMoviesRepository(
+        remoteDataSource: MoviesDataSource.RemoteDataSource,
+        localDataSource: MoviesDataSource.LocalDataSource
+    ): MoviesRepository =
+        MoviesRepositoryImpl(remoteDataSource, localDataSource)
 }

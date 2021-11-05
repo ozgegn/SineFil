@@ -1,6 +1,7 @@
 package com.ozgegn.sinefil.di
 
 import com.ozgegn.sinefil.data.MoviesRepository
+import com.ozgegn.sinefil.features.movieDetail.MovieDetailViewModel
 import com.ozgegn.sinefil.features.movies.MoviesHomeViewModel
 import com.ozgegn.sinefil.features.search.SearchViewModel
 import dagger.Module
@@ -22,4 +23,9 @@ object ViewModelModule {
     @ViewModelScoped
     fun provideSearchMovieViewModel(moviesRepository: MoviesRepository): SearchViewModel =
         SearchViewModel(moviesRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideMovieDetailViewModel(moviesRepository: MoviesRepository): MovieDetailViewModel =
+        MovieDetailViewModel(moviesRepository)
 }
