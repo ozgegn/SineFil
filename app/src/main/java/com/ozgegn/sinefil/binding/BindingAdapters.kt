@@ -30,7 +30,7 @@ fun bindImageView(imageView: ImageView, url: String?) {
 
 @BindingAdapter("doubleText")
 fun bindDoubleToText(textView: TextView?, value: Double?) {
-    textView?.text = String.format("%f", value)
+    textView?.text = String.format("%.2f", value)
 }
 
 @BindingAdapter("formatDate")

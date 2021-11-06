@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="genre"
             type="com.ozgegn.sinefil.data.GenreModel" />
@@ -13,11 +14,13 @@
             type="com.ozgegn.sinefil.features.search.GenreClickListener" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:background="@drawable/shadow_card_view"
         android:onClick="@{() -> clickListener.onClick(genre)}"
+        android:padding="8dp"
         app:cardCornerRadius="8dp">
 
         <TextView
@@ -27,6 +30,6 @@
             android:padding="8dp"
             android:text="@{genre.name}" />
 
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </layout>

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="movie"
             type="com.ozgegn.sinefil.data.MovieModel" />
@@ -14,42 +15,39 @@
             type="com.ozgegn.sinefil.features.movies.MovieClickListener" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:onClick="@{() -> clickListener.onClick(movie)}"
-        app:cardCornerRadius="8dp">
+        android:background="@drawable/shadow_card_view"
+        android:elevation="3dp"
+        android:onClick="@{() -> clickListener.onClick(movie)}">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/itemHomeMoviePoster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="center"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{movie.originalPosterUrl}"
+            tools:src="@drawable/ic_launcher_foreground" />
 
-            <ImageView
-                android:id="@+id/itemHomeMoviePoster"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:scaleType="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:loadImage="@{movie.originalPosterUrl}"
-                tools:src="@drawable/ic_launcher_foreground" />
+        <TextView
+            android:id="@+id/itemHomeMovieTitle"
+            style="@style/HomeMovieTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@{movie.title}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemHomeMoviePoster"
+            tools:text="Title" />
 
-            <TextView
-                android:id="@+id/itemHomeMovieTitle"
-                style="@style/HomeMovieTitleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text="@{movie.title}"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/itemHomeMoviePoster"
-                tools:text="Title" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

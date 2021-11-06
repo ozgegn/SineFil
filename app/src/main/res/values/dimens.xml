@@ -8,5 +8,8 @@
     <dimen name="movies_home_movie_title_size">16sp</dimen>
     <dimen name="movies_home_movie_title_padding">8sp</dimen>
 
+    <dimen name="movies_detail_top_title_size">22sp</dimen>
+    <dimen name="movies_detail_overview_title_size">18sp</dimen>
+    <dimen name="movies_detail_text_padding">8sp</dimen>
 
 </resources>

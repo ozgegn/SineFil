@@ -13,25 +13,46 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/darkGrey">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="250dp"
+            android:background="@android:color/transparent">
 
             <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/movieDetailMotion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="80dp"
+                android:layout_height="match_parent"
                 app:layoutDescription="@xml/fragment_movie_detail_scene"
                 app:layout_scrollFlags="scroll|enterAlways|snap|exitUntilCollapsed">
 
                 <ImageView
                     android:id="@+id/movieDetailPoster"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:loadImage="@{viewModel.movie.backDropUrl}" />
+
+                <LinearLayout
+                    android:id="@+id/movieDetailTitleLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintDimensionRatio="16:9"
-                    app:loadImage="@{viewModel.movie.originalPosterUrl}" />
+                    android:background="@drawable/rounded_background_yellow">
+
+                    <TextView
+                        android:id="@+id/movieDetailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:text="@{viewModel.movie.title}"
+                        tools:text="Title" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -46,42 +67,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/movieDetailTitle"
-                    android:layout_width="0dp"
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStart"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@{viewModel.movie.title}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Title" />
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="32dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="32dp" />
 
                 <TextView
                     android:id="@+id/movieDetailVoteAverage"
+                    style="@style/HomeDetailTopTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
                     android:padding="8dp"
                     app:doubleText="@{viewModel.movie.vote_average}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/movieDetailTitle"
+                    app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="Vote Average" />
 
                 <TextView
                     android:id="@+id/movieDetailReleaseDate"
+                    style="@style/HomeDetailTopTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
                     app:formatDate="@{viewModel.movie.release_date}"
                     app:layout_constraintBaseline_toBaselineOf="@+id/movieDetailVoteAverage"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.784"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@id/movieDetailVoteAverage"
                     tools:text="Release Date" />
 
                 <TextView
                     android:id="@+id/movieDetailOverview"
+                    style="@style/HomeDetailOverViewTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="false"

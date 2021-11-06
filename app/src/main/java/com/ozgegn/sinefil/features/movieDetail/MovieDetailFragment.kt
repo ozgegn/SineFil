@@ -42,6 +42,11 @@ class MovieDetailFragment : Fragment() {
 
         val movieId = args.movieId
         detailViewModel.getMovie(movieId)
+        detailViewModel.movie?.observe(viewLifecycleOwner) {
+            it?.let { movie ->
+                binding?.movieDetailMotion?.transitionToEnd()
+            }
+        }
 
     }
 

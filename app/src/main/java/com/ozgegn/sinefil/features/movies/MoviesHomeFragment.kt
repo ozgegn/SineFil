@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.ozgegn.sinefil.R
-import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.databinding.FragmentMoviesHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,21 +36,10 @@ class MoviesHomeFragment : Fragment() {
             navigateToMovieDetail(it)
         }
 
-        val popularMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
-            viewModel.onMovieClicked(movie)
-        })
-
         val nowPlayingMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
             viewModel.onMovieClicked(movie)
         })
-
-        val topRatedMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
-            viewModel.onMovieClicked(movie)
-        })
-
-        binding?.homePopularMoviesList?.adapter = popularMoviesAdapter
         binding?.homeNowPlayingMoviesList?.adapter = nowPlayingMoviesAdapter
-        binding?.homeTopRatedMoviesList?.adapter = topRatedMoviesAdapter
         viewModel.getMovies(1)
 
     }
