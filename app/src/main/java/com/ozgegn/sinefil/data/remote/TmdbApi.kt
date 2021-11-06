@@ -1,5 +1,6 @@
 package com.ozgegn.sinefil.data.remote
 
+import com.ozgegn.sinefil.data.remote.response.FilterWithGenreResponse
 import com.ozgegn.sinefil.data.remote.response.GetGenreListResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -24,5 +25,10 @@ interface TmdbApi {
 
     @GET("genre/movie/list")
     suspend fun getGenreList(): Response<GetGenreListResponse>
+
+    @GET("discover/movie")
+    suspend fun filterWithGenre(
+        @Query("with_genres") genreId: Int
+    ): Response<FilterWithGenreResponse>
 
 }

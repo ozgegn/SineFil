@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="movie"
             type="com.ozgegn.sinefil.data.MovieModel" />
@@ -28,8 +27,8 @@
 
             <ImageView
                 android:id="@+id/itemHomeMoviePoster"
-                android:layout_width="94dp"
-                android:layout_height="94dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:scaleType="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -14,4 +14,6 @@ interface MoviesRepository {
 
     suspend fun getMovie(id: Int): Result<MovieModel>
 
+    suspend fun getSearchResults(genreId: Int): Result<List<MovieModel>>
+
 }

@@ -16,6 +16,8 @@ interface MoviesDataSource {
 
         suspend fun getGenreList(): Result<List<GenreResponseModel>>
 
+        suspend fun getSearchResults(genreId: Int): Result<List<MovieResponseModel>>
+
     }
 
     interface LocalDataSource {

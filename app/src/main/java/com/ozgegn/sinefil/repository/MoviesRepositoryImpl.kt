@@ -89,4 +89,15 @@ class MoviesRepositoryImpl @Inject constructor(
             Result.Error(e)
         }
     }
+
+    override suspend fun getSearchResults(genreId: Int): Result<List<MovieModel>> {
+        return try {
+            when (val result = remoteDataSource.getSearchResults(genreId)) {
+                is Result.Success -> Result.Success(result.data.toMovieDisplayModelList())
+                else -> Result.Error(Exception("Movies not found"))
+            }
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
 }

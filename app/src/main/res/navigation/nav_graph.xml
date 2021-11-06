@@ -27,5 +27,20 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.ozgegn.sinefil.features.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.ozgegn.sinefil.features.search.SearchResultsFragment"
+        android:label="SearchResultsFragment">
+        <argument
+            android:name="genreId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_searchResultsFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
 </navigation>

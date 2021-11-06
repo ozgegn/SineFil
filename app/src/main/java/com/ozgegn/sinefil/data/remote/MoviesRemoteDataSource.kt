@@ -65,4 +65,18 @@ class MoviesRemoteDataSource @Inject constructor(
                 Result.Error(e)
             }
         }
+
+    override suspend fun getSearchResults(genreId: Int): Result<List<MovieResponseModel>> =
+        withContext(ioDispatcher) {
+            try {
+                val result = api.filterWithGenre(genreId)
+                if (result.isSuccessful) {
+                    Result.Success(result?.body()?.results ?: listOf())
+                } else {
+                    Result.Error(Exception("Movies not found"))
+                }
+            } catch (e: Exception) {
+                Result.Error(e)
+            }
+        }
 }

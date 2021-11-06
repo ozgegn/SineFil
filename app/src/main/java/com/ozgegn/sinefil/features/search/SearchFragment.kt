@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.ozgegn.sinefil.R
 import com.ozgegn.sinefil.databinding.FragmentSearchBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,8 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = SearchGenreListAdapter(GenreClickListener { genre ->
-
+            val action = SearchFragmentDirections.actionSearchFragmentToSearchResultsFragment(genre.id)
+            findNavController().navigate(action)
         })
 
         with(binding) {
@@ -38,7 +40,6 @@ class SearchFragment : Fragment() {
             this?.lifecycleOwner = this@SearchFragment
             this?.searchMovieGenreList?.adapter = adapter
         }
-
         viewModel.getGenres()
     }
 
