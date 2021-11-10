@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ozgegn.sinefil.features.watchlist.WatchListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkGrey">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/watchListNoDataGroup"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:constraint_referenced_ids="watchListNoDataImage, watchListNoDataText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibilityValue="@{viewModel.noData}"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/watchListNoDataImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="4:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_no_list"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/watchListNoDataText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/warning_no_list"
+            android:textAlignment="center"
+            android:textSize="@dimen/watchlist_no_data_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/watchListNoDataImage" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/watchList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:listData="@{viewModel.watchList}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

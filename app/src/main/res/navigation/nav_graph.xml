@@ -17,13 +17,17 @@
         android:name="com.ozgegn.sinefil.features.movieDetail.MovieDetailFragment"
         android:label="MovieDetailFragment">
         <argument
-            android:name="movieId"
-            app:argType="integer" />
+            android:name="movie"
+            app:argType="com.ozgegn.sinefil.data.MovieModel" />
     </fragment>
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.ozgegn.sinefil.features.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:id="@+id/watchListFragment"
+        android:name="com.ozgegn.sinefil.features.watchlist.WatchListFragment"
+        android:label="WatchListFragment" >
+        <action
+            android:id="@+id/action_watchListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.ozgegn.sinefil.features.search.SearchFragment"

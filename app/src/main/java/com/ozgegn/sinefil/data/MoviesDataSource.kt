@@ -24,6 +24,8 @@ interface MoviesDataSource {
 
         suspend fun getMovie(id: Int): Result<MovieEntity>
 
+        suspend fun getWatchList(): Result<List<MovieEntity>>
+
     }
 
 }

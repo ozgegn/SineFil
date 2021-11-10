@@ -25,4 +25,13 @@ class MovieLocalDataSource @Inject constructor(
             Result.Error(e)
         }
     }
+
+    override suspend fun getWatchList(): Result<List<MovieEntity>> = withContext(ioDispatcher) {
+        try {
+            val movieResult = movieDao.getWatchList()
+            Result.Success(movieResult)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
 }

@@ -52,11 +52,4 @@ class MoviesHomeViewModel @Inject constructor(
         }
     }
 
-    fun onMovieClicked(movieModel: MovieModel) {
-        viewModelScope.launch {
-            moviesRepository.saveMovie(movieModel)
-            _movieClicked.value = movieModel.id
-        }
-    }
-
 }

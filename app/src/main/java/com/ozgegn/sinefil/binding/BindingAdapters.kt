@@ -1,5 +1,6 @@
 package com.ozgegn.sinefil.binding
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -52,4 +53,12 @@ fun bindGenreRecyclerView(recyclerView: RecyclerView, data: List<GenreModel>?) {
     adapter.submitList(data) {
         recyclerView.scrollToPosition(0)
     }
+}
+
+@BindingAdapter("visibilityValue")
+fun bindViewVisibility(view: View?, isHidden: Boolean) {
+    if (isHidden)
+        view?.visibility = View.GONE
+    else
+        view?.visibility = View.VISIBLE
 }

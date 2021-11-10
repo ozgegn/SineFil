@@ -1,5 +1,9 @@
 package com.ozgegn.sinefil.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieModel(
     val backdrop_path: String?,
     val id: Int,
@@ -12,7 +16,7 @@ data class MovieModel(
     val title: String,
     val vote_average: Double,
     val vote_count: Int
-) {
+) : Parcelable {
     fun getBackDropUrl(): String = "https://image.tmdb.org/t/p/w500/$backdrop_path"
 
     fun getOriginalPosterUrl(): String = "https://image.tmdb.org/t/p/original/$poster_path"

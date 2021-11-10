@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ozgegn.sinefil.R
+import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.databinding.FragmentMoviesHomeBinding
 import com.ozgegn.sinefil.features.MovieClickListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,12 +36,8 @@ class MoviesHomeFragment : Fragment() {
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = this
 
-        viewModel.movieClicked.observe(viewLifecycleOwner) {
-            navigateToMovieDetail(it)
-        }
-
         val nowPlayingMoviesAdapter = MoviesPagingAdapter(MovieClickListener { movie ->
-            viewModel.onMovieClicked(movie)
+            navigateToMovieDetail(movie)
         })
         binding?.homeNowPlayingMoviesList?.adapter = nowPlayingMoviesAdapter
         viewModel.getMovies()
@@ -54,9 +51,9 @@ class MoviesHomeFragment : Fragment() {
 
     }
 
-    private fun navigateToMovieDetail(movieId: Int) {
+    private fun navigateToMovieDetail(movie: MovieModel) {
         val action =
-            MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movieId)
+            MoviesHomeFragmentDirections.actionMoviesHomeFragmentToMovieDetailFragment(movie)
         findNavController().navigate(action)
     }
 

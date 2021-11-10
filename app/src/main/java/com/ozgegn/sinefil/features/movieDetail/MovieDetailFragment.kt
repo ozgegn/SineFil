@@ -31,23 +31,23 @@ class MovieDetailFragment : Fragment() {
             container,
             false
         )
-        setHasOptionsMenu(true)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.lifecycleOwner = this
-        binding?.viewModel = detailViewModel
 
-        val movieId = args.movieId
-        detailViewModel.getMovie(movieId)
-        detailViewModel.movie?.observe(viewLifecycleOwner) {
-            it?.let { movie ->
-                binding?.movieDetailMotion?.transitionToEnd()
-            }
-        }
+        val movie = args.movie
+        binding?.movie = movie
+        binding?.executePendingBindings()
+        binding?.movieDetailMotion?.transitionToEnd()
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 }

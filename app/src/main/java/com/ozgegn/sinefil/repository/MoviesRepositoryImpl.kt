@@ -2,10 +2,7 @@ package com.ozgegn.sinefil.repository
 
 import androidx.paging.PagingData
 import com.ozgegn.sinefil.data.*
-import com.ozgegn.sinefil.data.mapper.toGenreDisplayModelList
-import com.ozgegn.sinefil.data.mapper.toMovieDisplayModel
-import com.ozgegn.sinefil.data.mapper.toMovieDisplayModelList
-import com.ozgegn.sinefil.data.mapper.toMovieEntityModel
+import com.ozgegn.sinefil.data.mapper.*
 import com.ozgegn.sinefil.data.remote.MovieResponseModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -57,6 +54,17 @@ class MoviesRepositoryImpl @Inject constructor(
             when (val result = remoteDataSource.getSearchResults(genreId)) {
                 is Result.Success -> Result.Success(result.data.toMovieDisplayModelList())
                 else -> Result.Error(Exception("Movies not found"))
+            }
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    override suspend fun getWatchList(): Result<List<MovieModel>> {
+        return try {
+            when (val result = localDataSource.getWatchList()) {
+                is Result.Success -> Result.Success(result.data.entityToMovieDisplayList())
+                else -> Result.Success(listOf())
             }
         } catch (e: Exception) {
             Result.Error(e)

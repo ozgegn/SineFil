@@ -4,6 +4,7 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.ozgegn.sinefil.data.GenreModel
 import com.ozgegn.sinefil.data.MovieModel
+import com.ozgegn.sinefil.data.local.entity.MovieEntity
 import com.ozgegn.sinefil.data.remote.MovieResponseModel
 import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
 
@@ -36,4 +37,8 @@ fun GenreResponseModel.toDisplayModel() = GenreModel(
 
 fun List<GenreResponseModel>.toGenreDisplayModelList() = this.map {
     it.toDisplayModel()
+}
+
+fun List<MovieEntity>.entityToMovieDisplayList() = this.map {
+    it.toMovieDisplayModel()
 }

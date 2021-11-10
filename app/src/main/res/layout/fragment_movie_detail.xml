@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.ozgegn.sinefil.features.movieDetail.MovieDetailViewModel" />
+            name="movie"
+            type="com.ozgegn.sinefil.data.MovieModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -36,7 +36,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:loadImage="@{viewModel.movie.backDropUrl}" />
+                    app:loadImage="@{movie.backDropUrl}" />
 
                 <LinearLayout
                     android:id="@+id/movieDetailTitleLayout"
@@ -49,7 +49,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="16dp"
-                        android:text="@{viewModel.movie.title}"
+                        android:text="@{movie.title}"
                         tools:text="Title" />
 
                 </LinearLayout>
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    app:doubleText="@{viewModel.movie.vote_average}"
+                    app:doubleText="@{movie.vote_average}"
                     app:layout_constraintStart_toEndOf="@id/guidelineStart"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Vote Average" />
@@ -97,7 +97,7 @@
                     style="@style/HomeDetailTopTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:formatDate="@{viewModel.movie.release_date}"
+                    app:formatDate="@{movie.release_date}"
                     app:layout_constraintBaseline_toBaselineOf="@+id/movieDetailVoteAverage"
                     app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -110,7 +110,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:singleLine="false"
-                    android:text="@{viewModel.movie.overview}"
+                    android:text="@{movie.overview}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
