@@ -1,12 +1,15 @@
 package com.ozgegn.sinefil.repository
 
+import androidx.paging.PagingData
 import com.ozgegn.sinefil.data.*
 import com.ozgegn.sinefil.data.mapper.toGenreDisplayModelList
 import com.ozgegn.sinefil.data.mapper.toMovieDisplayModel
 import com.ozgegn.sinefil.data.mapper.toMovieDisplayModelList
 import com.ozgegn.sinefil.data.mapper.toMovieEntityModel
+import com.ozgegn.sinefil.data.remote.MovieResponseModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
@@ -15,49 +18,8 @@ class MoviesRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MoviesRepository {
 
-    override suspend fun getPopularMovies(page: Int): Result<List<MovieModel>> {
-        return try {
-            when (val result = remoteDataSource.getPopularMovies(page)) {
-                is Result.Success -> {
-                    Result.Success(result.data.toMovieDisplayModelList())
-                }
-                else -> {
-                    Result.Success(listOf())
-                }
-            }
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
-    }
-
-    override suspend fun getNowPlayingMovies(page: Int): Result<List<MovieModel>> {
-        return try {
-            when (val result = remoteDataSource.getNowPlayingMovies(page)) {
-                is Result.Success -> {
-                    Result.Success(result.data.toMovieDisplayModelList())
-                }
-                else -> {
-                    Result.Success(listOf())
-                }
-            }
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
-    }
-
-    override suspend fun getTopRatedMovies(page: Int): Result<List<MovieModel>> {
-        return try {
-            when (val result = remoteDataSource.getTopRatedMovies(page)) {
-                is Result.Success -> {
-                    Result.Success(result.data.toMovieDisplayModelList())
-                }
-                else -> {
-                    Result.Success(listOf())
-                }
-            }
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
+    override suspend fun getNowPlayingMovies(): Flow<PagingData<MovieResponseModel>?> {
+        return remoteDataSource.getNowPlayingMovies()
     }
 
     override suspend fun getGenres(): Result<List<GenreModel>> {

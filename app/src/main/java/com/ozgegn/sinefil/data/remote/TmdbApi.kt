@@ -1,7 +1,6 @@
 package com.ozgegn.sinefil.data.remote
 
-import com.ozgegn.sinefil.data.remote.response.FilterWithGenreResponse
-import com.ozgegn.sinefil.data.remote.response.GetGenreListResponse
+import com.ozgegn.sinefil.data.remote.response.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

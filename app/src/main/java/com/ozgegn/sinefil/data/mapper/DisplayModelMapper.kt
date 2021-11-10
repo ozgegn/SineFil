@@ -1,5 +1,7 @@
 package com.ozgegn.sinefil.data.mapper
 
+import androidx.paging.PagingData
+import androidx.paging.map
 import com.ozgegn.sinefil.data.GenreModel
 import com.ozgegn.sinefil.data.MovieModel
 import com.ozgegn.sinefil.data.remote.MovieResponseModel
@@ -22,6 +24,11 @@ fun MovieResponseModel.toDisplayModel(): MovieModel = MovieModel(
 fun List<MovieResponseModel>.toMovieDisplayModelList(): List<MovieModel> = this.map {
     it.toDisplayModel()
 }
+
+fun PagingData<MovieResponseModel>.pagingToMovieDisplayModelList(): PagingData<MovieModel> =
+    this.map {
+        it.toDisplayModel()
+    }
 
 fun GenreResponseModel.toDisplayModel() = GenreModel(
     id, name

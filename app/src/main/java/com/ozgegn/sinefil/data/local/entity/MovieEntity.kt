@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "movie")
 data class MovieEntity(
-    @ColumnInfo(name = "backdropPath") val backdrop_path: String,
+    @ColumnInfo(name = "backdropPath") val backdrop_path: String?,
     @PrimaryKey @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "originalLanguage") val original_language: String,
     @ColumnInfo(name = "originalTitle") val original_title: String,

@@ -12,7 +12,7 @@
 
         <variable
             name="clickListener"
-            type="com.ozgegn.sinefil.features.movies.MovieClickListener" />
+            type="com.ozgegn.sinefil.features.MovieClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

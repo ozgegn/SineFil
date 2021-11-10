@@ -43,7 +43,6 @@
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
                 app:layout_constraintStart_toEndOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@id/homeNowPlayingMoviesTitle"
-                app:listData="@{viewModel.nowPlayingMovies}"
                 app:spanCount="2"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_home_movies_list" />

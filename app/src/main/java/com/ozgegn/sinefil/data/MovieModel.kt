@@ -1,7 +1,7 @@
 package com.ozgegn.sinefil.data
 
 data class MovieModel(
-    val backdrop_path: String,
+    val backdrop_path: String?,
     val id: Int,
     val original_language: String,
     val original_title: String,

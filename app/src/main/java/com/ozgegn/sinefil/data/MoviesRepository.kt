@@ -1,12 +1,12 @@
 package com.ozgegn.sinefil.data
 
+import androidx.paging.PagingData
+import com.ozgegn.sinefil.data.remote.MovieResponseModel
+import kotlinx.coroutines.flow.Flow
+
 interface MoviesRepository {
 
-    suspend fun getPopularMovies(page: Int): Result<List<MovieModel>>
-
-    suspend fun getNowPlayingMovies(page: Int): Result<List<MovieModel>>
-
-    suspend fun getTopRatedMovies(page: Int): Result<List<MovieModel>>
+    suspend fun getNowPlayingMovies(): Flow<PagingData<MovieResponseModel>?>
 
     suspend fun getGenres(): Result<List<GenreModel>>
 

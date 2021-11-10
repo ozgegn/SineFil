@@ -1,11 +1,16 @@
 package com.ozgegn.sinefil.data.remote
 
+import androidx.paging.*
 import com.ozgegn.sinefil.data.MoviesDataSource
+import com.ozgegn.sinefil.data.MoviesPagingSource
+import com.ozgegn.sinefil.data.NETWORK_PAGE_SIZE
 import com.ozgegn.sinefil.data.Result
 import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 class MoviesRemoteDataSource @Inject constructor(
@@ -13,44 +18,19 @@ class MoviesRemoteDataSource @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MoviesDataSource.RemoteDataSource {
 
-    override suspend fun getPopularMovies(page: Int): Result<List<MovieResponseModel>> =
-        withContext(ioDispatcher) {
-            try {
-                val result = api.getPopularMovies(page)
-                if (result.isSuccessful)
-                    Result.Success(result.body()?.results ?: listOf())
-                else
-                    Result.Error(Exception("Movies not found"))
-            } catch (e: Exception) {
-                Result.Error(e)
+    override fun getNowPlayingMovies(): Flow<PagingData<MovieResponseModel>?> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                MoviesPagingSource(
+                    api
+                )
             }
-        }
-
-    override suspend fun getNowPlayingMovies(page: Int): Result<List<MovieResponseModel>> =
-        withContext(ioDispatcher) {
-            try {
-                val result = api.getNowPlayingMovies(page)
-                if (result.isSuccessful)
-                    Result.Success(result.body()?.results ?: listOf())
-                else
-                    Result.Error(Exception("Movies not found"))
-            } catch (e: Exception) {
-                Result.Error(e)
-            }
-        }
-
-    override suspend fun getTopRatedMovies(page: Int): Result<List<MovieResponseModel>> =
-        withContext(ioDispatcher) {
-            try {
-                val result = api.getTopRatedMovies(page)
-                if (result.isSuccessful)
-                    Result.Success(result.body()?.results ?: listOf())
-                else
-                    Result.Error(Exception("Movies not found"))
-            } catch (e: Exception) {
-                Result.Error(e)
-            }
-        }
+        ).flow
+    }
 
     override suspend fun getGenreList(): Result<List<GenreResponseModel>> =
         withContext(ioDispatcher) {

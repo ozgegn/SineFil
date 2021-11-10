@@ -1,6 +1,9 @@
 package com.ozgegn.sinefil.di
 
+import androidx.paging.PagingSource
 import com.ozgegn.sinefil.data.MoviesDataSource
+import com.ozgegn.sinefil.data.MoviesPagingSource
+import com.ozgegn.sinefil.data.remote.MovieResponseModel
 import com.ozgegn.sinefil.data.remote.MoviesRemoteDataSource
 import com.ozgegn.sinefil.data.remote.TmdbApi
 import dagger.Module

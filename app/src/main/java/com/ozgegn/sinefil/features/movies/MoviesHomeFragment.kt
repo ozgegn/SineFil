@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ozgegn.sinefil.R
 import com.ozgegn.sinefil.databinding.FragmentMoviesHomeBinding
+import com.ozgegn.sinefil.features.MovieClickListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MoviesHomeFragment : Fragment() {
@@ -36,11 +39,18 @@ class MoviesHomeFragment : Fragment() {
             navigateToMovieDetail(it)
         }
 
-        val nowPlayingMoviesAdapter = HomeListAdapter(MovieClickListener { movie ->
+        val nowPlayingMoviesAdapter = MoviesPagingAdapter(MovieClickListener { movie ->
             viewModel.onMovieClicked(movie)
         })
         binding?.homeNowPlayingMoviesList?.adapter = nowPlayingMoviesAdapter
-        viewModel.getMovies(1)
+        viewModel.getMovies()
+        viewModel.nowPlayingMovies.observe(viewLifecycleOwner) { data ->
+            viewLifecycleOwner.lifecycleScope.launch {
+                data?.let {
+                    nowPlayingMoviesAdapter.submitData(it)
+                }
+            }
+        }
 
     }
 
