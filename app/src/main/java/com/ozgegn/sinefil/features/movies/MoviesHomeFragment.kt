@@ -48,7 +48,6 @@ class MoviesHomeFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun navigateToMovieDetail(movie: MovieModel) {

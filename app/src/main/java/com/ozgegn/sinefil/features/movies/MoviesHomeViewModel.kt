@@ -11,6 +11,7 @@ import com.ozgegn.sinefil.data.MoviesRepository
 import com.ozgegn.sinefil.data.Result
 import com.ozgegn.sinefil.data.mapper.pagingToMovieDisplayModelList
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -30,23 +31,28 @@ class MoviesHomeViewModel @Inject constructor(
     val errorMessage: LiveData<String>
         get() = _errorMessage
 
-    var isLoading = ObservableBoolean()
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     private val _movieClicked = MutableLiveData<Int>()
     val movieClicked: LiveData<Int>
         get() = _movieClicked
 
-
     fun getMovies() {
 
-        isLoading.set(true)
+        _isLoading.value = true
 
         viewModelScope.launch {
+            //to show loading animation
+            delay(2000)
             moviesRepository.getNowPlayingMovies().map { data ->
                 data?.pagingToMovieDisplayModelList()
             }.catch {
+                _isLoading.value = false
                 _errorMessage.value = "Can not loaded"
             }.collect {
+                _isLoading.value = false
                 _nowPlayingMovies.value = it
             }
         }

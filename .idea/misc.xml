@@ -3,11 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.28703703703703703" />
+        <entry key="app/src/main/res/drawable/button_add_watchlist_bg.xml" value="0.155" />
+        <entry key="app/src/main/res/drawable/button_remove_watchlist_bg.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/image_placeholder.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/rounded_background_yellow.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/shadow_card_view.xml" value="0.2525" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/attrs.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/custom_add_watchlist_button.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_movie_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_movies_home.xml" value="0.2667572463768116" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3591485507246377" />

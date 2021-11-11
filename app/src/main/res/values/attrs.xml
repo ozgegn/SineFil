@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="AddWatchListButton">
+        <attr name="isAdded" format="boolean" />
+        <attr name="unselectedFillColor" format="color" />
+        <attr name="selectedFillColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomProgressView">
+        <attr name="circleColor" format="color"/>
+        <attr name="circleRadius" format="dimension"/>
+        <attr name="radius" format="dimension"/>
+    </declare-styleable>
+    
+</resources>

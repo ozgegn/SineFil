@@ -12,10 +12,4 @@
         android:icon="@drawable/ic_search"
         android:title="@string/menu_search"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/watchListFragment"
-        android:icon="@drawable/ic_list"
-        android:title="@string/menu_watchlist"
-        app:showAsAction="never" />
 </menu>
