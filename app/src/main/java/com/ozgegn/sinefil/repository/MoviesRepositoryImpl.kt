@@ -20,9 +20,17 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getGenres(): Result<List<GenreModel>> {
-        return try {
-            when (val result = remoteDataSource.getGenreList()) {
+        try {
+            val cachedGenres = localDataSource.getGenres()
+            if (cachedGenres is Result.Success) {
+                return Result.Success(cachedGenres.data.entityToGenreDisplayModelList())
+            }
+
+            return when (val result = remoteDataSource.getGenreList()) {
                 is Result.Success -> {
+                    result.data.forEach { genreResponseModel ->
+                        localDataSource.saveGenre(genreResponseModel.responseToEntityModel())
+                    }
                     Result.Success(result.data.toGenreDisplayModelList())
                 }
                 else -> {
@@ -30,7 +38,7 @@ class MoviesRepositoryImpl @Inject constructor(
                 }
             }
         } catch (e: Exception) {
-            Result.Error(e)
+            return Result.Error(e)
         }
     }
 
@@ -54,17 +62,6 @@ class MoviesRepositoryImpl @Inject constructor(
             when (val result = remoteDataSource.getSearchResults(genreId)) {
                 is Result.Success -> Result.Success(result.data.toMovieDisplayModelList())
                 else -> Result.Error(Exception("Movies not found"))
-            }
-        } catch (e: Exception) {
-            Result.Error(e)
-        }
-    }
-
-    override suspend fun getWatchList(): Result<List<MovieModel>> {
-        return try {
-            when (val result = localDataSource.getWatchList()) {
-                is Result.Success -> Result.Success(result.data.entityToMovieDisplayList())
-                else -> Result.Success(listOf())
             }
         } catch (e: Exception) {
             Result.Error(e)

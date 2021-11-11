@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.ozgegn.sinefil.data.MoviesDataSource
 import com.ozgegn.sinefil.data.local.AppDatabase
+import com.ozgegn.sinefil.data.local.GenreDao
 import com.ozgegn.sinefil.data.local.MovieDao
 import com.ozgegn.sinefil.data.local.MovieLocalDataSource
 import dagger.Module
@@ -26,6 +27,12 @@ object PersistenceModule {
     fun provideMovieDao(appDatabase: AppDatabase): MovieDao = appDatabase.movieDao()
 
     @Provides
-    fun provideLocalDataSource(dao: MovieDao): MoviesDataSource.LocalDataSource = MovieLocalDataSource(dao)
+    fun provideGenreDap(appDatabase: AppDatabase): GenreDao = appDatabase.genreDao()
+
+    @Provides
+    fun provideLocalDataSource(
+        movieDao: MovieDao,
+        genreDao: GenreDao
+    ): MoviesDataSource.LocalDataSource = MovieLocalDataSource(movieDao, genreDao)
 
 }

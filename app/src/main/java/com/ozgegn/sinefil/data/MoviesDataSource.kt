@@ -1,6 +1,7 @@
 package com.ozgegn.sinefil.data
 
 import androidx.paging.PagingData
+import com.ozgegn.sinefil.data.local.entity.GenreEntity
 import com.ozgegn.sinefil.data.local.entity.MovieEntity
 import com.ozgegn.sinefil.data.remote.MovieResponseModel
 import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
@@ -24,7 +25,9 @@ interface MoviesDataSource {
 
         suspend fun getMovie(id: Int): Result<MovieEntity>
 
-        suspend fun getWatchList(): Result<List<MovieEntity>>
+        suspend fun saveGenre(genreEntity: GenreEntity)
+
+        suspend fun getGenres(): Result<List<GenreEntity>>
 
     }
 

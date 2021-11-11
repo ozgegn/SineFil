@@ -2,6 +2,7 @@ package com.ozgegn.sinefil.data.local
 
 import com.ozgegn.sinefil.data.MoviesDataSource
 import com.ozgegn.sinefil.data.Result
+import com.ozgegn.sinefil.data.local.entity.GenreEntity
 import com.ozgegn.sinefil.data.local.entity.MovieEntity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -10,6 +11,7 @@ import javax.inject.Inject
 
 class MovieLocalDataSource @Inject constructor(
     private val movieDao: MovieDao,
+    private val genreDao: GenreDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MoviesDataSource.LocalDataSource {
 
@@ -26,10 +28,14 @@ class MovieLocalDataSource @Inject constructor(
         }
     }
 
-    override suspend fun getWatchList(): Result<List<MovieEntity>> = withContext(ioDispatcher) {
+    override suspend fun saveGenre(genreEntity: GenreEntity) = withContext(ioDispatcher) {
+        genreDao.add(genreEntity)
+    }
+
+    override suspend fun getGenres(): Result<List<GenreEntity>> = withContext(ioDispatcher) {
         try {
-            val movieResult = movieDao.getWatchList()
-            Result.Success(movieResult)
+            val genres = genreDao.getAll()
+            Result.Success(genres)
         } catch (e: Exception) {
             Result.Error(e)
         }

@@ -4,14 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.ozgegn.sinefil.data.local.entity.MovieEntity
+import com.ozgegn.sinefil.data.local.entity.GenreEntity
 
 @Dao
-interface MovieDao {
+interface GenreDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun add(movieEntity: MovieEntity)
+    suspend fun add(genreEntity: GenreEntity)
 
-    @Query("SELECT * FROM movie WHERE id=:id")
-    suspend fun get(id: Int): MovieEntity
+    @Query("SELECT * from genre")
+    suspend fun getAll(): List<GenreEntity>
 }
