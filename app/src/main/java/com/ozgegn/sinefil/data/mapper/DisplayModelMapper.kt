@@ -4,10 +4,12 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.ozgegn.sinefil.data.GenreModel
 import com.ozgegn.sinefil.data.MovieModel
+import com.ozgegn.sinefil.data.ProviderModel
 import com.ozgegn.sinefil.data.local.entity.GenreEntity
 import com.ozgegn.sinefil.data.local.entity.MovieEntity
 import com.ozgegn.sinefil.data.remote.MovieResponseModel
 import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
+import com.ozgegn.sinefil.data.remote.response.ProvidersResponseModel
 
 fun MovieResponseModel.toDisplayModel(): MovieModel = MovieModel(
     backdrop_path,
@@ -47,4 +49,12 @@ fun List<GenreEntity>.entityToGenreDisplayModelList() = this.map {
 
 fun List<MovieEntity>.entityToMovieDisplayList() = this.map {
     it.toMovieDisplayModel()
+}
+
+fun List<ProvidersResponseModel>.providerResponseToDisplayModel() = this.map {
+    ProviderModel(
+        it.logo_path,
+        it.provider_name,
+        it.provider_id
+    )
 }

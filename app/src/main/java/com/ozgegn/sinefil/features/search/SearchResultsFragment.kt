@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.ozgegn.sinefil.R
 import com.ozgegn.sinefil.databinding.FragmentSearchResultBinding
 import com.ozgegn.sinefil.features.MovieClickListener
-import com.ozgegn.sinefil.features.movies.HomeListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -9,8 +9,10 @@ import com.bumptech.glide.Glide
 import com.ozgegn.sinefil.R
 import com.ozgegn.sinefil.data.GenreModel
 import com.ozgegn.sinefil.data.MovieModel
-import com.ozgegn.sinefil.features.movies.HomeListAdapter
+import com.ozgegn.sinefil.data.ProviderModel
+import com.ozgegn.sinefil.features.search.HomeListAdapter
 import com.ozgegn.sinefil.features.search.SearchGenreListAdapter
+import com.ozgegn.sinefil.features.service.StreamServicesAdapter
 import java.text.SimpleDateFormat
 
 @BindingAdapter("listData")
@@ -61,4 +63,12 @@ fun bindViewVisibility(view: View?, isHidden: Boolean) {
         view?.visibility = View.GONE
     else
         view?.visibility = View.VISIBLE
+}
+
+@BindingAdapter("loadProviders")
+fun bindProviderRecyclerView(recyclerView: RecyclerView?, data: List<ProviderModel>?) {
+    val adapter = recyclerView?.adapter as StreamServicesAdapter
+    adapter.submitList(data) {
+        recyclerView?.scrollToPosition(0)
+    }
 }

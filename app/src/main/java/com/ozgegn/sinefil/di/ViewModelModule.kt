@@ -4,6 +4,7 @@ import com.ozgegn.sinefil.data.MoviesRepository
 import com.ozgegn.sinefil.features.movieDetail.MovieDetailViewModel
 import com.ozgegn.sinefil.features.movies.MoviesHomeViewModel
 import com.ozgegn.sinefil.features.search.SearchViewModel
+import com.ozgegn.sinefil.features.service.StreamServicesViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,4 +29,9 @@ object ViewModelModule {
     @ViewModelScoped
     fun provideMovieDetailViewModel(moviesRepository: MoviesRepository): MovieDetailViewModel =
         MovieDetailViewModel(moviesRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideStreamServicesViewModel(moviesRepository: MoviesRepository): StreamServicesViewModel =
+        StreamServicesViewModel(moviesRepository)
 }

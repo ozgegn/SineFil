@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "521344328502",
+    "project_id": "sinefil-f99a4",
+    "storage_bucket": "sinefil-f99a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521344328502:android:a0b4457e219354f2304997",
+        "android_client_info": {
+          "package_name": "com.ozgegn.sinefil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "521344328502-dil76r4ig7qcbe4bdfipfj6kc6kup12o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUifBt62O2OgxkZ2snBrSgpgCzU9XYnXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "521344328502-dil76r4ig7qcbe4bdfipfj6kc6kup12o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

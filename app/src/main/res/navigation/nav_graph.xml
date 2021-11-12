@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_moviesHomeFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_moviesHomeFragment_to_streamServicesFragment"
+            app:destination="@id/streamServicesFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -39,4 +42,8 @@
             android:id="@+id/action_searchResultsFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/streamServicesFragment"
+        android:name="com.ozgegn.sinefil.features.service.StreamServicesFragment"
+        android:label="StreamServicesFragment" />
 </navigation>

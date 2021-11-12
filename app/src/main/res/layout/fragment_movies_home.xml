@@ -15,10 +15,6 @@
         android:layout_height="match_parent"
         android:background="@color/darkGrey">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,14 +25,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                app:visibilityValue = "@{!viewModel.isLoading()}"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:circleColor="@color/yellow"
                 app:circleRadius="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:radius="40dp"
-                app:circleColor="@color/yellow"/>
+                app:visibilityValue="@{!viewModel.isLoading()}"
+                tools:visibility="gone" />
 
             <TextView
                 android:id="@+id/homeNowPlayingMoviesTitle"
@@ -48,6 +45,18 @@
                 app:layout_constraintStart_toEndOf="@id/guidelineStart"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Button
+                android:id="@+id/movieListDiscoverService"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_discover_button"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:text="@string/button_discover_available_services"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/homeNowPlayingMoviesTitle" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/homeNowPlayingMoviesList"
                 android:layout_width="0dp"
@@ -56,7 +65,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
                 app:layout_constraintStart_toEndOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@id/homeNowPlayingMoviesTitle"
+                app:layout_constraintTop_toBottomOf="@id/movieListDiscoverService"
                 app:spanCount="2"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_home_movies_list" />

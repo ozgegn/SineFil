@@ -12,5 +12,9 @@
     <dimen name="movies_detail_overview_title_size">18sp</dimen>
     <dimen name="movies_detail_text_padding">8sp</dimen>
     <dimen name="watchlist_no_data_text_size">22sp</dimen>
+    <dimen name="margin_discover_button">8dp</dimen>
+    <dimen name="item_available_service_image_width">64dp</dimen>
+    <dimen name="item_available_service_image_height">64dp</dimen>
+    <dimen name="item_available_service_padding">8dp</dimen>
 
 </resources>

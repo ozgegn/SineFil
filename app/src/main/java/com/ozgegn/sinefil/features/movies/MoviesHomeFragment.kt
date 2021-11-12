@@ -35,6 +35,9 @@ class MoviesHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         binding?.lifecycleOwner = this
+        binding?.movieListDiscoverService?.setOnClickListener {
+            findNavController().navigate(MoviesHomeFragmentDirections.actionMoviesHomeFragmentToStreamServicesFragment())
+        }
 
         val nowPlayingMoviesAdapter = MoviesPagingAdapter(MovieClickListener { movie ->
             navigateToMovieDetail(movie)

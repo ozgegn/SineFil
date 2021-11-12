@@ -6,7 +6,9 @@ import com.ozgegn.sinefil.data.MoviesPagingSource
 import com.ozgegn.sinefil.data.NETWORK_PAGE_SIZE
 import com.ozgegn.sinefil.data.Result
 import com.ozgegn.sinefil.data.remote.response.GenreResponseModel
+import com.ozgegn.sinefil.data.remote.response.ProvidersResponseModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
@@ -30,6 +32,7 @@ class MoviesRemoteDataSource @Inject constructor(
                 )
             }
         ).flow
+            .cachedIn(CoroutineScope(ioDispatcher))
     }
 
     override suspend fun getGenreList(): Result<List<GenreResponseModel>> =
@@ -56,6 +59,20 @@ class MoviesRemoteDataSource @Inject constructor(
                     Result.Error(Exception("Movies not found"))
                 }
             } catch (e: Exception) {
+                Result.Error(e)
+            }
+        }
+
+    override suspend fun getProviders(region: String): Result<List<ProvidersResponseModel>> =
+        withContext(ioDispatcher) {
+            try {
+                val result = api.getProviders(region)
+                if (result.isSuccessful) {
+                    Result.Success(result.body()?.results ?: listOf())
+                }else {
+                    Result.Error(Exception("Providers not found"))
+                }
+            }catch (e: Exception) {
                 Result.Error(e)
             }
         }

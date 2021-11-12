@@ -10,5 +10,9 @@
     <string name="menu_watchlist">Watch List</string>
 
     <string name="warning_no_list">No List!</string>
+    <string name="button_discover_available_services">Discover Available Services</string>
+
+    <string name="permission_denied_explanation">You need to grant location permission in order to get the available services in region</string>
+
 
 </resources>

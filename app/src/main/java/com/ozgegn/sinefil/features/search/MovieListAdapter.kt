@@ -1,4 +1,4 @@
-package com.ozgegn.sinefil.features.movies
+package com.ozgegn.sinefil.features.search
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

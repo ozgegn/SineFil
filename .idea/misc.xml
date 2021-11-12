@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/drawable/button_remove_watchlist_bg.xml" value="0.155" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.3575" />
         <entry key="app/src/main/res/drawable/image_placeholder.xml" value="0.3575" />
-        <entry key="app/src/main/res/drawable/rounded_background_yellow.xml" value="0.3575" />
+        <entry key="app/src/main/res/drawable/rounded_background_yellow.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/shadow_card_view.xml" value="0.2525" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/attrs.xml" value="0.3591485507246377" />
@@ -18,7 +18,9 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search_result.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_stream_services.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_watchlist.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_available_services.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/item_home_movies_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_search_genres.xml" value="0.3591485507246377" />
       </map>

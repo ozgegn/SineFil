@@ -30,4 +30,7 @@ interface TmdbApi {
         @Query("with_genres") genreId: Int
     ): Response<FilterWithGenreResponse>
 
+    @GET("watch/providers/movie")
+    suspend fun getProviders(@Query("watch_region") region: String): Response<GetProvidersResponse>
+
 }

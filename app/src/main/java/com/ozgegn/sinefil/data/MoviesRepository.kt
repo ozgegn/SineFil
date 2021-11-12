@@ -16,4 +16,6 @@ interface MoviesRepository {
 
     suspend fun getSearchResults(genreId: Int): Result<List<MovieModel>>
 
+    suspend fun getProviders(region: String): Result<List<ProviderModel>>
+
 }

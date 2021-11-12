@@ -12,7 +12,7 @@ data class MovieEntity(
     @ColumnInfo(name = "originalTitle") val original_title: String,
     @ColumnInfo(name = "overview") val overview: String,
     @ColumnInfo(name = "popularity") val popularity: Double,
-    @ColumnInfo(name = "posterPath") val poster_path: String,
+    @ColumnInfo(name = "posterPath") val poster_path: String?,
     @ColumnInfo(name = "releaseDate") val release_date: String,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "voteAverage") val vote_average: Double,

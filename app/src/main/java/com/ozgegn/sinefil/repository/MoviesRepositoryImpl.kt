@@ -22,7 +22,7 @@ class MoviesRepositoryImpl @Inject constructor(
     override suspend fun getGenres(): Result<List<GenreModel>> {
         try {
             val cachedGenres = localDataSource.getGenres()
-            if (cachedGenres is Result.Success) {
+            if (cachedGenres is Result.Success && !cachedGenres.data.isNullOrEmpty()) {
                 return Result.Success(cachedGenres.data.entityToGenreDisplayModelList())
             }
 
@@ -62,6 +62,17 @@ class MoviesRepositoryImpl @Inject constructor(
             when (val result = remoteDataSource.getSearchResults(genreId)) {
                 is Result.Success -> Result.Success(result.data.toMovieDisplayModelList())
                 else -> Result.Error(Exception("Movies not found"))
+            }
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
+
+    override suspend fun getProviders(region: String): Result<List<ProviderModel>> {
+        return try {
+            when (val result = remoteDataSource.getProviders(region)) {
+                is Result.Success -> Result.Success(result.data.providerResponseToDisplayModel())
+                else -> Result.Success(listOf())
             }
         } catch (e: Exception) {
             Result.Error(e)
