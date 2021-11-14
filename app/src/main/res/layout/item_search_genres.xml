@@ -17,7 +17,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/item_genres_margin"
         android:background="@drawable/shadow_card_view"
         android:onClick="@{() -> clickListener.onClick(genre)}"
         android:padding="8dp"
@@ -27,7 +27,7 @@
             android:id="@+id/itemSearchGenreName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="@dimen/item_genres_text_padding"
             android:text="@{genre.name}" />
 
     </LinearLayout>

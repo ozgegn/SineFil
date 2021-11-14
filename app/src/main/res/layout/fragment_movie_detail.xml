@@ -18,7 +18,7 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/detail_app_bar_height"
             android:background="@android:color/transparent">
 
             <androidx.constraintlayout.motion.widget.MotionLayout
@@ -72,21 +72,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="32dp" />
+                    app:layout_constraintGuide_begin="@dimen/detail_guideline_margin" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guidelineEnd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_end="32dp" />
+                    app:layout_constraintGuide_end="@dimen/detail_guideline_margin" />
 
                 <TextView
                     android:id="@+id/movieDetailVoteAverage"
                     style="@style/HomeDetailTopTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
+                    android:padding="@dimen/detail_top_text_padding"
                     app:doubleText="@{movie.vote_average}"
                     app:layout_constraintStart_toEndOf="@id/guidelineStart"
                     app:layout_constraintTop_toTopOf="parent"

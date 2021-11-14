@@ -24,8 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:circleRadius="4dp"
-            app:radius="40dp"
+            app:circleRadius="@dimen/circle_progress_radius"
+            app:radius="@dimen/circle_progress_outer_radius"
             app:circleColor="@color/yellow"/>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -45,14 +45,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+            app:layout_constraintGuide_begin="@dimen/result_guideline_margin" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineEnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="16dp" />
+            app:layout_constraintGuide_end="@dimen/result_guideline_margin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

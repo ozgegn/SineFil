@@ -16,5 +16,14 @@
     <dimen name="item_available_service_image_width">64dp</dimen>
     <dimen name="item_available_service_image_height">64dp</dimen>
     <dimen name="item_available_service_padding">8dp</dimen>
+    <dimen name="detail_app_bar_height">250dp</dimen>
+    <dimen name="detail_guideline_margin">32dp</dimen>
+    <dimen name="detail_top_text_padding">8dp</dimen>
+    <dimen name="circle_progress_radius">4dp</dimen>
+    <dimen name="circle_progress_outer_radius">40dp</dimen>
+    <dimen name="home_guideline_margin">16dp</dimen>
+    <dimen name="result_guideline_margin">16dp</dimen>
+    <dimen name="item_genres_margin">8dp</dimen>
+    <dimen name="item_genres_text_padding">8dp</dimen>
 
 </resources>
