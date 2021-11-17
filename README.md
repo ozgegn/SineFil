@@ -22,5 +22,5 @@ The key and TMDB API url must be added to local.properties
 - [Room](https://developer.android.com/jetpack/androidx/releases/room/) - Provides an abstraction layer over SQLite
 - [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html/) - To create asynchronous programs in a very fluent way
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android/) - Dependency injection library for Android that reduces the boilerplate of doing manual dependency injection
-- - [Paging 3] (https://developer.android.com/topic/libraries/architecture/paging/v3-overview) -  Helps to load and display pages of data from a larger dataset from local storage or over network. 
+- [Paging 3] (https://developer.android.com/topic/libraries/architecture/paging/v3-overview) -  Helps to load and display pages of data from a larger dataset from local storage or over network. 
 - [Firebase](https://firebase.google.com/docs/crashlytics?hl=uk/) - Lightweight, realtime crash reporter that helps to track, prioritize, and fix stability issues that erode in app quality
